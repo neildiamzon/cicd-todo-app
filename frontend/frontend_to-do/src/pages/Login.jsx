@@ -3,6 +3,7 @@ import { TextField, Button, Container, Typography, Checkbox, Box } from '@mui/ma
 import '@fontsource/roboto/300.css';
 import axios from 'axios';
 import { baseUrl } from '../Constants';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
@@ -58,6 +59,7 @@ const Login = () => {
                 label="Password"
                 variant="outlined"
                 fullWidth
+                type='password'
                 margin="normal"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -67,6 +69,7 @@ const Login = () => {
                     Login
                 </Button>
             </Box>
+            <Link to="/registration">Don't have an account? Register</Link>
             </Box>
         </Container>
     );
