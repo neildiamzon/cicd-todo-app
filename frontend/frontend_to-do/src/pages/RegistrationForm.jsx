@@ -14,17 +14,10 @@ import axios from "axios";
 import {baseUrl} from "../Constants";
 
 const RegistrationForm = () => {
-    const navigate = useNavigate(); // Initialize the navigate hook
+    const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
-    userName: '',
+    username: '',
     email: '',
-    customerId: '',
-    customerName: '',
-    contactPerson: '',
-    shippingAddress: '',
-    contactPersonEmail: '',
-    organization: '',
-    phoneNumber: '',
     password: '',
     confirmPassword: '',
     termsAccepted: false
@@ -42,7 +35,7 @@ const RegistrationForm = () => {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: baseUrl + `api/authentication/registration`,
+      url: baseUrl + `register/`,
       data : formData
     };
 
@@ -64,14 +57,8 @@ const RegistrationForm = () => {
     // Simple validation
     let validationErrors = {};
     
-    if (!formData.userName) validationErrors.userName = "Username is required";
+    if (!formData.username) validationErrors.username = "Username is required";
     if (!formData.email) validationErrors.email = "E-mail is required";
-    if (!formData.customerName) validationErrors.customerName = "Customer Name is required";
-    if (!formData.contactPerson) validationErrors.contactPerson = "Contact Person is required";
-    if (!formData.shippingAddress) validationErrors.shippingAddress = "Shipping Address is required";
-    if (!formData.contactPersonEmail) validationErrors.contactPersonEmail = "Contact Email is required";
-    if (!formData.organization) validationErrors.organization = "Organization is required";
-    if (!formData.phoneNumber) validationErrors.phoneNumber = "Phone Number is required";
     if (!formData.password) validationErrors.password = "Password is required";
     if (formData.password !== formData.confirmPassword) validationErrors.confirmPassword = "Passwords do not match";
     if (!formData.termsAccepted) validationErrors.termsAccepted = "You must accept the Terms & Conditions";
@@ -89,23 +76,20 @@ const RegistrationForm = () => {
 
   return (
     <Container component="main" maxWidth="xs" sx={{backgroundColor: 'white', p: 9, borderRadius: 6}}>
-        <Typography color="black" variant="h5" align="center" gutterBottom>
-       <strong>NeonVault Wares</strong>
-      </Typography>
       <Typography color="black" variant="h5" align="center" gutterBottom>
-        Customer Registration
+        Registration
       </Typography>
       <form onSubmit={handleSubmit}>
           <Grid2 item xs={12} marginBottom={2}>
             <TextField
               label="Your Username"
-              name="userName"
+              name="username"
               fullWidth
               variant="outlined"
-              value={formData.userName}
+              value={formData.username}
               onChange={handleChange}
-              error={!!errors.userName}
-              helperText={errors.userName}
+              error={!!errors.username}
+              helperText={errors.username}
             />
           </Grid2>
 
@@ -121,86 +105,6 @@ const RegistrationForm = () => {
               helperText={errors.email}
             />
           </Grid2>
-
-          <Grid2 item xs={12} marginBottom={2}>
-            <TextField
-              label="Your Name"
-              name="customerName"
-              fullWidth
-              variant="outlined"
-              value={formData.customerName}
-              onChange={handleChange}
-              error={!!errors.customerName}
-              helperText={errors.customerName}
-            />
-          </Grid2>
-
-          <Grid2 item xs={12} marginBottom={2}>
-            <TextField
-              label="Contact Person"
-              name="contactPerson"
-              fullWidth
-              variant="outlined"
-              value={formData.contactPerson}
-              onChange={handleChange}
-              error={!!errors.contactPerson}
-              helperText={errors.contactPerson}
-            />
-          </Grid2>
-
-          <Grid2 item xs={12} marginBottom={2}>
-            <TextField
-              label="Shipping Address"
-              name="shippingAddress"
-              fullWidth
-              variant="outlined"
-              value={formData.shippingAddress}
-              onChange={handleChange}
-              error={!!errors.shippingAddress}
-              helperText={errors.shippingAddress}
-            />
-          </Grid2>
-
-          <Grid2 item xs={12} marginBottom={2}>
-            <TextField
-              label="Contact Person Email"
-              name="contactPersonEmail"
-              type="email"
-              fullWidth
-              variant="outlined"
-              value={formData.contactPersonEmail}
-              onChange={handleChange}
-              error={!!errors.contactPersonEmail}
-              helperText={errors.contactPersonEmail}
-            />
-          </Grid2>
-
-          <Grid2 item xs={12} marginBottom={2}>
-            <TextField
-              label="Organization"
-              name="organization"
-              fullWidth
-              variant="outlined"
-              value={formData.organization}
-              onChange={handleChange}
-              error={!!errors.organization}
-              helperText={errors.organization}
-            />
-          </Grid2>
-
-          <Grid2 item xs={12} marginBottom={2}>
-            <TextField
-              label="Phone Number"
-              name="phoneNumber"
-              fullWidth
-              variant="outlined"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              error={!!errors.phoneNumber}
-              helperText={errors.phoneNumber}
-            />
-          </Grid2>
-
           <Grid2 item xs={12} marginBottom={2}>
             <TextField
               label="Password"
