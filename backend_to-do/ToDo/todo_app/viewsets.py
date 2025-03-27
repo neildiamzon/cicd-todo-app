@@ -16,6 +16,7 @@ class TodoCardViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return TodoCard.objects.filter(user=self.request.user)
     def perform_create(self, serializer):
+        # Automatically assign the current logged-in user to the TodoCard
         serializer.save(user=self.request.user)
 
     @action(detail=False, methods=["delete"])

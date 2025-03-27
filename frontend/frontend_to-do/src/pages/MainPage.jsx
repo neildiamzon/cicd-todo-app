@@ -110,7 +110,7 @@ const MainPage = () => {
         let config = {
             method: 'delete',
             maxBodyLength: Infinity,
-            url: baseUrl + `api/todo/batch_delete/`, 
+            url: baseUrl + `api/todo/batch_delete/`,
             headers: {
                 Authorization: `Token ${localStorage.getItem("authtoken")}`,
             },
@@ -151,7 +151,7 @@ const MainPage = () => {
         let config = {
             method: 'patch',
             maxBodyLength: Infinity,
-            url: baseUrl + `api/todo/batch_update_status/`, 
+            url: baseUrl + `api/todo/batch_update_status/`,
             headers: {
                 Authorization: `Token ${localStorage.getItem("authtoken")}`,
             },
