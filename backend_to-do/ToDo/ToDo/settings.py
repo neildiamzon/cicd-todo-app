@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'todo_app',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +53,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+]
 ROOT_URLCONF = 'ToDo.urls'
 
 TEMPLATES = [
