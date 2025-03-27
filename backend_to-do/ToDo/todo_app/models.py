@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User  # Import Django's built-in User model
 
 class TodoCard(models.Model):
     PRIORITY_CHOICES = [
@@ -10,9 +11,9 @@ class TodoCard(models.Model):
     STATUS_CHOICES = [
         ('pending', 'Pending'),
         ('in_progress', 'In Progress'),
-        ('completed', 'Completed'),
+        ('complete', 'Completed'),
     ]
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Link to the User model
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     due_date = models.DateTimeField(null=True, blank=True)

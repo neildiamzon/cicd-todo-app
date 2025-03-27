@@ -6,12 +6,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
   const isAuthenticated = localStorage.getItem("authtoken") !== null
-
+  if (isAuthenticated) {
+    console.log("User is authenticated")
+  }
   return (
     <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/main-page/*" element={isAuthenticated ? <MainPage /> : <Login/>}/>
+          <Route path="/main-page" element={isAuthenticated ? <MainPage /> : <Login/>}/>
           <Route path="/registration" element={<RegistrationForm />} />
         </Routes>
     </Router>

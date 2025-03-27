@@ -4,12 +4,10 @@ import '@fontsource/roboto/300.css';
 import axios from 'axios';
 import { baseUrl } from '../Constants';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-
-    localStorage.removeItem('authtoken');
-    localStorage.removeItem('user_id');
-
+    const navigate = useNavigate(); 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
@@ -30,7 +28,9 @@ const Login = () => {
             console.log(JSON.stringify(response.data));
             localStorage.setItem('authtoken', response.data.token);
             localStorage.setItem('user_id', response.data.user_id);
+            localStorage.setItem('username', userName);
             alert('Login successful!');
+            navigate('/main-page');
           })
           .catch((error) => {
             alert('Invalid email or password');

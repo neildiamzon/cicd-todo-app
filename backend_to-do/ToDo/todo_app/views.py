@@ -12,7 +12,6 @@ from rest_framework.response import Response
 
 from .serializers import UserSerializer, TodoCardSerializer
 
-
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
