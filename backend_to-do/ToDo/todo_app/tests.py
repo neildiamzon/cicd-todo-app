@@ -3,6 +3,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from .models import TodoCard
+from django.db import connections
 
 class TodoCardViewSetTestCase(APITestCase):
     def setUp(self):
@@ -18,6 +19,10 @@ class TodoCardViewSetTestCase(APITestCase):
             status='pending',
             user=self.user
         )
+    @classmethod
+    def tearDownClass(self):
+        """Close database connections after each test"""
+        connections.close_all()  # Close all database connections
 
     def test_create_todo(self):
         """Test creating a new TodoCard"""
