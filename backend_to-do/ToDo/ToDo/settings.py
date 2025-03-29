@@ -94,10 +94,14 @@ DATABASES = {
         "NAME" : "neondb",
         "USER" : "neondb_owner",
         "PASSWORD": "npg_wjTtUI4D0yXk",
-        "HOST": "ep-steep-dew-a7mq03ja-pooler.ap-southeast-2.aws.neon.tech"
+        "HOST": "ep-steep-dew-a7mq03ja-pooler.ap-southeast-2.aws.neon.tech",
+        'CONN_MAX_AGE': None,  # This keeps the connection open indefinitely
     }
 }
 
+TEST = {
+    'NAME': 'test_neondb',  # Ensure this database is separate
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
