@@ -3,12 +3,18 @@ import Login from './pages/Login.jsx'
 import MainPage from './pages/MainPage.jsx'
 import RegistrationForm from './pages/RegistrationForm.jsx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+  
+  const navigate = useNavigate();
   const isAuthenticated = localStorage.getItem("authtoken") !== null
-  if (isAuthenticated) {
-    console.log("User is authenticated")
-  }
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/main-page');
+    }
+  }, [isAuthenticated, navigate]);
   return (
     <Router>
         <Routes>

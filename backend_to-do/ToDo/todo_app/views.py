@@ -23,8 +23,6 @@ class LoginView(ObtainAuthToken):
         token = Token.objects.get(key=response.data['token'])
         return Response({'token': token.key, 'user_id': token.user_id})
 
-
-
 class LogoutView(generics.GenericAPIView):
     permission_classes = (IsAuthenticated,)
     def post(self, request):
