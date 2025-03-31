@@ -7,23 +7,30 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function App() {
-  
-  const navigate = useNavigate();
-  const isAuthenticated = localStorage.getItem("authtoken") !== null
+  return (
+    <Router>
+        <AppRoutes />
+    </Router>
+  )
+}
+
+function AppRoutes() {
+  const navigate = useNavigate(); // useNavigate inside Router context
+  const isAuthenticated = localStorage.getItem("authtoken") !== null;
+
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/main-page');
     }
   }, [isAuthenticated, navigate]);
+
   return (
-    <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/main-page" element={isAuthenticated ? <MainPage /> : <Login/>}/>
-          <Route path="/registration" element={<RegistrationForm />} />
-        </Routes>
-    </Router>
-  )
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/main-page" element={isAuthenticated ? <MainPage /> : <Login />} />
+      <Route path="/registration" element={<RegistrationForm />} />
+    </Routes>
+  );
 }
 
 export default App
