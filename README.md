@@ -1,5 +1,9 @@
 # CICD To-Do App
 
+## This app is built mainly for the CICD - Assignment#1 - Task 2
+- **My student ID** 20241360
+- Auckland Institute of Studies - T1 2025 CICD - Submitted to Lei Song
+
 ## Overview
 The **CICD To-Do App** is a full-stack to-do application designed to demonstrate Continuous Integration and Continuous Deployment (CI/CD) best practices. It consists of a Django backend with a REST API and a React frontend, utilizing JWT authentication for secure access.
 
